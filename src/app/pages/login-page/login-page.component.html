@@ -1,0 +1,27 @@
+<div class="container">
+    <form [formGroup]="form">
+        <img class="mb-4" src="/assets/images/logo_verzel.0335b665.svg" alt="">
+
+        <div class="py-3">
+            <label for="username" class="form-label">Usuário</label>
+            <input type="text" class="form-control" id="username" formControlName="username"
+                [ngClass]="{'is-invalid': (form.controls['username'].invalid && !form.controls['username'].pristine)}">
+            <small [hidden]="form.controls['username'].pristine || !form.controls['username'].invalid">Usuário
+                inválido.</small>
+
+        </div>
+        <div class="py-3">
+            <label for="password" class="form-label">Senha</label>
+            <input type="password" id="password" class="form-control" formControlName="password"
+                [ngClass]="{'is-invalid': (form.controls['password'].invalid && !form.controls['password'].pristine)}">
+            <small [hidden]="form.controls['password'].pristine || !form.controls['password'].invalid">Senha em formato
+                inválido.</small>
+        </div>
+        <button class="btn btn-lg btn-primary text-center" type="submit" (click)="submit()"
+            [disabled]="form.invalid">Login</button>
+        <div class="row">
+            <small *ngIf="unauthorized">Acesso não autorizado.</small>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,18 @@
+form {
+    text-align: center;
+    padding: 25px 25% 0 25%;
+}
+
+label {
+    text-align: start;
+    display: block;
+}
+
+img {
+    margin-top: 32px;
+    height: 54px;
+}
+
+small {
+    color: var(--alert);
+}

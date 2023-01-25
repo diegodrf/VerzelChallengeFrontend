@@ -1,0 +1,41 @@
+.car-sort {
+    border: 0;
+    color: var(--primary);
+    width: auto;
+    display: inline;
+}
+
+.search-bar {
+    background-color: var(--primary);
+}
+
+.search-bar .btn {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-left: 0;
+    color: #D1D1D1;
+}
+
+.tag {
+    border: 1px solid var(--light);
+    color: var(--primary);
+    background-color: #fff;
+
+    outline: none;
+    box-shadow: none;
+    border-radius: 0.25rem;
+    font-size: .87rem;
+    font-weight: 500;
+    padding: 5px 10px;
+}
+
+.tag:hover {
+    background-color: var(--light);
+    border-color: var(--secondary);
+    color: var(--secondary);
+}
+
+.car-result-count {
+    color: var(--medium-shade);
+    font-weight: 500;
+}

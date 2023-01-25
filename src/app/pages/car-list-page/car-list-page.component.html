@@ -1,0 +1,37 @@
+<app-nav-bar></app-nav-bar>
+<div class="search-bar mb-3 py-4">
+    <div class="container input-group">
+        <input type="text" class="form-control" placeholder="Busque por marca, modelo..." aria-label="Search"
+            [(ngModel)]="textSearch" (keyup.enter)="searchCars()">
+        <button class="btn btn-light" type="button" (click)="searchCars()">
+            <i class="bi bi-search"></i>
+        </button>
+    </div>
+</div>
+
+<div class="container">
+    <p>CARROS USADOS</p>
+
+    <button *ngIf="tag != null" type="button" class="tag">
+        {{tag | uppercase}} <span (click)="removeTag()">X</span>
+    </button>
+
+    <div class="d-flex w-100 justify-content-between py-3">
+        <div class="car-result-count">{{ cars.length }} Resultados</div>
+        <div>
+            <strong>
+                Ordernar: <select class="form-select car-sort" (change)="searchCars($event.target)">
+                    <option selected value="0">Menor Preço</option>
+                    <option value="1">Maior Preço</option>
+                </select>
+            </strong>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-lg-4" *ngFor="let car of cars">
+            <app-car-card [car]="car"></app-car-card>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

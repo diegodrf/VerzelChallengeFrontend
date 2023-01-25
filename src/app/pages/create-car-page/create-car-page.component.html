@@ -1,0 +1,47 @@
+<div class="container">
+    <form [formGroup]="form">
+        <label for="brand" class="form-label">Marca</label>
+        <select class="form-select" id="brand" formControlName="brand"
+            [ngClass]="{'is-invalid': (form.controls['brand'].invalid && !form.controls['brand'].pristine)}">
+            <option value="{{brand.id}}" *ngFor="let brand of brands">{{brand.name}}</option>
+        </select>
+        <div class="mb-3">
+            <label for="name" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="name" placeholder="Civic" formControlName="name"
+                [ngClass]="{'is-invalid': (form.controls['name'].invalid && !form.controls['name'].pristine)}">
+        </div>
+        <div class="mb-3">
+            <label for="model" class="form-label">Modelo</label>
+            <input type="text" class="form-control" id="model" placeholder="Sedan" formControlName="model"
+                [ngClass]="{'is-invalid': (form.controls['model'].invalid && !form.controls['model'].pristine)}">
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Preço</label>
+            <input type="text" class="form-control" id="price" placeholder="8000000" formControlName="price"
+                [ngClass]="{'is-invalid': (form.controls['price'].invalid && !form.controls['price'].pristine)}">
+        </div>
+
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Foto</label>
+            <input class="form-control" type="file" id="formFile" (change)="handleUpload($event)"
+                formControlName="image"
+                [ngClass]="{'is-invalid': (form.controls['image'].invalid && !form.controls['image'].pristine)}">
+        </div>
+
+        <img class="shadow" [src]="imageBase64" *ngIf="imageBase64; else currentCarImage">
+
+        <div class="buttons">
+            <button type="button" class="btn btn-danger" [routerLink]="['/']">Voltar</button>
+            <button type="submit" class="btn btn-primary" (click)="createCar()" [disabled]="form.invalid"
+                *ngIf="!isUpdateAction">Cadastrar</button>
+            <button type="button" class="btn btn-danger" *ngIf="isUpdateAction" (click)="deleteCar()">Apagar</button>
+            <button type="submit" class="btn btn-primary" *ngIf="isUpdateAction" (click)="updateCar()"
+                [disabled]="form.invalid">Salvar</button>
+        </div>
+    </form>
+</div>
+
+<ng-template #currentCarImage>
+    <img class="shadow"
+        [src]="car && car.images.length > 0 ? 'https://localhost:7013/images/' + car.images[0].filename : '/assets/images/default-cars.jpeg'">
+</ng-template>

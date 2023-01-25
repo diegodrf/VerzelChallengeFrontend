@@ -1,0 +1,18 @@
+form {
+    padding-top: 50px;
+}
+
+.buttons {
+    display: block;
+    text-align: end;
+}
+
+.buttons button {
+    margin-left: 32px;
+    margin-top: 32px;
+}
+
+img {
+    max-height: 128px;
+    aspect-ratio: 16/10;
+}

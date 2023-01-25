@@ -1,0 +1,17 @@
+footer {
+  background-color: #000;
+}
+
+footer * {
+  color: var(--white);
+}
+
+.horizontal-list {
+  display: inline;
+  margin-right: 15px;
+}
+
+.social-media i {
+  font-size: 24px;
+  color: var(--white);
+}
