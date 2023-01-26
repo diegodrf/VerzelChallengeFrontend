@@ -21,7 +21,10 @@ export class CarCardComponent implements OnInit {
     loginService
       .getCurrentUser()
       .subscribe(
-        (data: any) => this.isLoggedIn = data
+        (data: any) => {
+          this.isLoggedIn = data;
+          console.log(data);
+        }
       )
   }
 

@@ -54,11 +54,14 @@ export class CarService {
   }
 
   getAll(text: string | null = null, priceLowerToHigher: boolean = true): Observable<Vehicle[]> {
-    let url: string = `${AppConstants.API_BASE_URL}/vehicles?`;
+    let params: string[] = []
     if (text) {
-      url += `q=${text}`;
+      params.push(`q=${text}`);
     };
-    url += `priceLowerToHigher=${priceLowerToHigher}`;
+    params.push(`priceLowerToHigher=${priceLowerToHigher}`);
+
+    let url: string = `${AppConstants.API_BASE_URL}/vehicles?${params.join('&')}`;
+
     return this.httpClient.get<Vehicle[]>(url);
   }
 }

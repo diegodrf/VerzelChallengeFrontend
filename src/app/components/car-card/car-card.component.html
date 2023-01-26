@@ -4,7 +4,7 @@
     <div class="card-body">
         <h4 class="card-title">{{car.brand.name}} {{car.name}} {{car.model}}</h4>
         <p class="card-text car-description">2020 - 50.361 km - Sao Paulo</p>
-        <h5>{{car.price / 100 | currency: 'BRL'}}</h5>
+        <h5>{{car.price | currency: 'BRL'}}</h5>
         <button class="btn btn-secondary" type="button" *ngIf="isLoggedIn" (click)="edit()">Editar</button>
     </div>
 </div>

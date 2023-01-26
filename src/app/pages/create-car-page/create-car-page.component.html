@@ -18,6 +18,7 @@
         <div class="mb-3">
             <label for="price" class="form-label">Preço</label>
             <input type="text" class="form-control" id="price" placeholder="8000000" formControlName="price"
+            mask="separator.2" thousandSeparator="."
                 [ngClass]="{'is-invalid': (form.controls['price'].invalid && !form.controls['price'].pristine)}">
         </div>
 

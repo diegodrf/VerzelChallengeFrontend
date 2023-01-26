@@ -19,7 +19,7 @@ export class AuthenticationService {
     let url = `${AppConstants.API_BASE_URL}/authentication/login`;
     let body = {
       username: username,
-      passwordHash: password
+      password: password
     };
     return this.httpClient.post<AccessToken>(url, body);
   }

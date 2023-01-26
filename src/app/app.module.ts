@@ -12,27 +12,30 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AdminNavBarComponent } from './components/nav-bar/admin/admin-nav-bar/admin-nav-bar.component';
 import { CreateCarPageComponent } from './pages/create-car-page/create-car-page.component';
-import {FooterComponent} from "./components/footer/footer.component";
+import { FooterComponent } from "./components/footer/footer.component";
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        NavBarComponent,
-        CarListPageComponent,
-        CarCardComponent,
-        LoginPageComponent,
-        AdminNavBarComponent,
-        CreateCarPageComponent,
-        FooterComponent,
-        FooterComponent
-    ],
+  declarations: [
+    AppComponent,
+    NavBarComponent,
+    CarListPageComponent,
+    CarCardComponent,
+    LoginPageComponent,
+    AdminNavBarComponent,
+    CreateCarPageComponent,
+    FooterComponent,
+    FooterComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+    NgxMaskModule.forRoot({ showMaskTyped: false }),
   ],
   providers: [],
   bootstrap: [AppComponent]
