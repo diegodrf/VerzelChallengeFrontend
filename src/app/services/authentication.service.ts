@@ -32,7 +32,7 @@ export class AuthenticationService {
     let accessToken = this.localStorageService.getAccessToken();
     if (accessToken) {
       return true;
-    };
+    }
     return false;
   }
 

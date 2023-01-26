@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
-export class LoginPageComponent implements OnInit, OnDestroy {
+export class LoginPageComponent implements OnDestroy {
 
   login$?: Subscription;
   unauthorized: boolean = false;
@@ -38,9 +38,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       username: this.usernameControl,
       password: this.passwordControl
     });
-  }
-
-  ngOnInit(): void {
   }
 
   submit() {

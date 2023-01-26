@@ -19,7 +19,7 @@ export const environment = {
 ***
 
 ## Instruções para execução
-Na raiz do projeto executar o comando abaixo. A opção ```-o``` fará com que um navegador abra automaticamente com a execução do proejto.
+Na raiz do projeto executar o comando abaixo. A opção ```-o``` fará com que um navegador abra automaticamente com a execução do projeto.
 ```PowerShell 
 ng serve -o
 ```

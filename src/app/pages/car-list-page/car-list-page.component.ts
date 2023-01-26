@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { catchError, of, Subscription } from 'rxjs';
 import { Vehicle } from 'src/app/models/vehicle';
 import { CarService } from 'src/app/services/car.service';
@@ -17,8 +16,7 @@ export class CarListPageComponent implements OnInit, OnDestroy {
   cars$?: Subscription;
 
   constructor(
-    private carService: CarService,
-    private fb: FormBuilder
+    private carService: CarService
   ) { }
 
   ngOnInit(): void {

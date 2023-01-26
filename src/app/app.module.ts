@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { AdminNavBarComponent } from './components/nav-bar/admin/admin-nav-bar/a
 import { CreateCarPageComponent } from './pages/create-car-page/create-car-page.component';
 import { FooterComponent } from "./components/footer/footer.component";
 import { NgxMaskModule } from 'ngx-mask';
+import { HttpInterceptorService } from './services/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,14 @@ import { NgxMaskModule } from 'ngx-mask';
 
     NgxMaskModule.forRoot({ showMaskTyped: false }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+     }
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

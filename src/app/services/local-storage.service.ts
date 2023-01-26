@@ -13,10 +13,11 @@ export class LocalStorageService {
     localStorage.setItem(environment.access_token, JSON.stringify(accessToken));
   }
 
-  getAccessToken(): AccessToken | null {
+  getAccessToken(): string | null {
     let accessTokenString = localStorage.getItem(environment.access_token);
     if (accessTokenString) {
-      return JSON.parse(accessTokenString);
+      const accessToken = JSON.parse(accessTokenString);
+      return accessToken.token;
     }
     return null;
   }
