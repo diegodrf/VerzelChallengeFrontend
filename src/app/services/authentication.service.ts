@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AppConstants } from '../app-constants';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { AccessToken } from '../models/responseModels/accessToken';
 import { LocalStorageService } from './local-storage.service';
 
@@ -10,13 +10,17 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class AuthenticationService {
 
+  currentUserSubject: BehaviorSubject<boolean>;
+
   constructor(
     private httpClient: HttpClient,
     private localStorageService: LocalStorageService
-  ) { }
+  ) {
+    this.currentUserSubject = new BehaviorSubject<boolean>(this.isAuthenticated());
+  }
 
   login(username: string, password: string): Observable<AccessToken> {
-    let url = `${AppConstants.API_BASE_URL}/authentication/login`;
+    let url = `${environment.api_base_url}/authentication/login`;
     let body = {
       username: username,
       password: password
@@ -30,5 +34,9 @@ export class AuthenticationService {
       return true;
     };
     return false;
+  }
+
+  getCurrentUser(): Observable<boolean> {
+    return this.currentUserSubject.asObservable();
   }
 }

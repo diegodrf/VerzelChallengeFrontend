@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AppConstants } from '../app-constants';
+import { environment } from 'src/environments/environment';
 import { AccessToken } from '../models/responseModels/accessToken';
 
 @Injectable({
@@ -10,11 +10,11 @@ export class LocalStorageService {
   constructor() { }
 
   setAccessToken(accessToken: AccessToken) {
-    localStorage.setItem(AppConstants.ACCESS_TOKEN, JSON.stringify(accessToken));
+    localStorage.setItem(environment.access_token, JSON.stringify(accessToken));
   }
 
   getAccessToken(): AccessToken | null {
-    let accessTokenString = localStorage.getItem(AppConstants.ACCESS_TOKEN);
+    let accessTokenString = localStorage.getItem(environment.access_token);
     if (accessTokenString) {
       return JSON.parse(accessTokenString);
     }
@@ -22,6 +22,6 @@ export class LocalStorageService {
   }
 
   clearAccessToken() {
-    localStorage.removeItem(AppConstants.ACCESS_TOKEN);
+    localStorage.removeItem(environment.access_token);
   }
 }

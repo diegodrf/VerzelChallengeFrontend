@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { catchError, Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { LoginServiceService } from './login-service.service';
 
 @Component({
   selector: 'app-login-page',
@@ -30,7 +29,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   busy: boolean = false;
 
   constructor(
-    private loginService: LoginServiceService,
     private formBuilder: FormBuilder,
     private router: Router,
     private localStorageService: LocalStorageService,
@@ -61,7 +59,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       .subscribe(
         (data: any) => {
           this.localStorageService.setAccessToken(data)
-          this.loginService.currentUserSubject.next(true);
+          this.authenticationService.currentUserSubject.next(true);
           this.router.navigate(['/']);
         }
       );

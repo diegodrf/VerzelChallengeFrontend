@@ -10,3 +10,7 @@ h5 {
 .car-image {
     aspect-ratio: 16 / 10;
 }
+
+.edit-button {
+    text-align: end;
+}

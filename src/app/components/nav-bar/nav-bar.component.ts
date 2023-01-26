@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppConstants } from 'src/app/app-constants';
-import { LoginServiceService } from 'src/app/pages/login-page/login-service.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
@@ -15,9 +14,9 @@ export class NavBarComponent implements OnInit {
 
   constructor(
     private localStorageService: LocalStorageService,
-    private loginService: LoginServiceService
+    private authenticationService: AuthenticationService
   ) {
-    loginService.getCurrentUser().subscribe((data: any) => this.isAuthenticated = data)
+    authenticationService.getCurrentUser().subscribe((data: any) => this.isAuthenticated = data)
   }
 
   ngOnInit(): void {

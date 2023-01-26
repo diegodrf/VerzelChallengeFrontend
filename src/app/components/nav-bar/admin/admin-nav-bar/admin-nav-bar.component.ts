@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppConstants } from 'src/app/app-constants';
-import { LoginServiceService } from 'src/app/pages/login-page/login-service.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
@@ -13,7 +12,7 @@ export class AdminNavBarComponent implements OnInit {
   constructor(
     private router: Router,
     private localStorageService: LocalStorageService,
-    private loginService: LoginServiceService
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -21,7 +20,7 @@ export class AdminNavBarComponent implements OnInit {
 
   logOut() {
     this.localStorageService.clearAccessToken();
-    this.loginService.currentUserSubject.next(false);
+    this.authenticationService.currentUserSubject.next(false);
     this.router.navigate(['/']);
   }
 
